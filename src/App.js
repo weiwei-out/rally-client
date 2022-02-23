@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
+  // function postItem(item) {
+  //   fetch("http://localhost:9292/items", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(item),
+  //   })
+  //     .then((res) => res.json())
+  //     .then((newItem) => {
+  //       setItems([newItem, ...items]);
+  //     });
+  // }
+  function cb(obj) {
+    fetch("http://localhost:3000/test", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(obj),
+    }).then(console.log(obj));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <form onSubmi={cb}>
+        <input type="text" placeholder="username" />
+        <p></p>
+        <input type="text" placeholder="password" />
+        <p></p>
+        <button id="submit1" type="submit">
+          login
+        </button>
+      </form>
     </div>
   );
 }
